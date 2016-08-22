@@ -1,2 +1,2 @@
-# webpack-dashboard-docs
-Documentation for webpack-dashboard
+# Webpack-Dashboard Documentation
+Documentation for webpack-dashboard, a CLI dashboard for webpack dev server.
