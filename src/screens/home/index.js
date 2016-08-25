@@ -1,4 +1,7 @@
 import React from "react";
+import Radium from "radium";
+import { Link } from "react-router";
+const RadiumLink = Radium(Link);
 
 class Home extends React.Component {
   render() {
@@ -15,7 +18,7 @@ class Home extends React.Component {
         <p>That's cool, but it&#8217;s mostly noisy and scrolly and not super helpful. This plugin changes that. Now when 
         you run your dev server, you basically work at NASA:</p>
         <img src="http://i.imgur.com/5BWa1hB.png" alt="webpack output in terminal with webpack-dashboard" />
-      {/*Getting started will live here*/}
+        <RadiumLink to="/docs/getting-started">Let&#8217;s Get Started</RadiumLink>
       </div>
     );
   }
