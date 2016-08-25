@@ -10,6 +10,7 @@ class Home extends React.Component {
         <h1>Webpack Dashboard</h1>
         <p>A CLI dashboard for webpack dev server.</p>
         <pre><code>npm install webpack-dashboard --save-dev</code></pre>
+        <iframe src="https://ghbtns.com/github-btn.html?user=formidablelabs&repo=webpack-dashboard&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
         <a href="https://github.com/FormidableLabs/webpack-dashboard">Source Code on GitHub</a>
         <br/>
         <a href="https://github.com/FormidableLabs/webpack-dashboard/issues">Report an Issue</a>
