@@ -8,7 +8,7 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Webpack Dashboard</h1>
-        <p>A CLI dashboard for webpack dev server.</p>
+        <p>A CLI dashboard for webpack dev server. Feel like an astronaut when you run your build.</p>
         <pre><code>npm install webpack-dashboard --save-dev</code></pre>
         <iframe src="https://ghbtns.com/github-btn.html?user=formidablelabs&repo=webpack-dashboard&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
         <a href="https://github.com/FormidableLabs/webpack-dashboard">Source Code on GitHub</a>
