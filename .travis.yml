@@ -21,10 +21,10 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
   # Decrypt the key file
-  - openssl aes-256-cbc -K $encrypted_718217747736_key -iv $encrypted_718217747736_iv -in deploy_static.pem.enc -out ./deploy_static.pem -d
+  - openssl aes-256-cbc -K $encrypted_a17c7ac72588_key -iv $encrypted_a17c7ac72588_iv -in deploy_static.pem.enc -out deploy_static.pem -d
+    -in deploy_static.pem.enc -out deploy_static.pem -d
 
   # Install npmv3 because of postinstall bugs in npmv2:
-  # See https://github.com/FormidableLabs/victory/issues/98
   - npm install -g npm@3
 
 install:
@@ -33,6 +33,9 @@ install:
 script:
   - npm test
   - NODE_ENV=production node_modules/.bin/builder run build-static
+  - node_modules/.bin/builder run install-selenium
+  - ROWDY_SETTINGS=local.firefox node_modules/.bin/builder run test-func-static-prod
+  - ROWDY_SETTINGS=local.phantomjs node_modules/.bin/builder run test-func-static-prod
 
 # Once build on Travis is working, automatically deploy it on master only:
 deploy:
