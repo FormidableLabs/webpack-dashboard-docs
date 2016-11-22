@@ -18,23 +18,32 @@
     "url": "https://github.com/FormidableLabs/webpack-dashboard-docs/issues"
   },
   "homepage": "https://github.com/FormidableLabs/webpack-dashboard-docs#readme",
+  "greenkeeper": {
+    "ignore": [
+      "history"
+    ]
+  },
   "devDependencies": {
-    "builder-docs-archetype-dev": "^3.0.2",
+    "builder-docs-archetype-dev": "^5.0.0",
     "react-docgen": "2.7.0"
   },
   "dependencies": {
+    "anchorate": "^1.1.0",
     "babel-preset-stage-1": "^6.5.0",
     "builder": "^2.9.1",
-    "builder-docs-archetype": "^3.0.2",
+    "builder-docs-archetype": "^5.0.0",
     "chai": "^3.2.0",
     "webpack-dashboard": "FormidableLabs/webpack-dashboard",
     "ecology": "^1.6.0",
-    "formidable-landers": "^3.3.3",
+    "formidable-landers": "^6.0.0",
     "history": "~1.17.0",
     "lodash": "^4.6.1",
+    "markdown-it": "^8.0.0",
+    "markdown-it-toc-and-anchor": "^4.1.1",
     "marked": "^0.3.5",
     "mocha": "^2.3.3",
-    "radium": "0.17.2",
+    "normalize.css": "^4.2.0",
+    "prismjs": "^1.5.1",
     "react": "^15.1.0",
     "react-addons-test-utils": "^15.1.0",
     "react-document-meta": "^2.0.3",

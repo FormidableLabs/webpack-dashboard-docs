@@ -7,11 +7,14 @@
   <meta name="description" content="A CLI dashboard for webpack dev server.">
   <meta property="og:site_name" content="Webpack Dashboard" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://www.formidable.com/open-source/webpack-dashboard/" />
+  <meta property="og:url" content="https://www.formidable.com/open-source/webpack-dashboard/" />
   <meta property="og:description" content="A CLI dashboard for webpack dev server." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./static/favicon.ico" type="image/x-icon">
   <base href="{{baseHref}}" />
+  {{!-- Styles --}}
+  <link rel="stylesheet" type="text/css" href="https://formidable.com/open-source/fonts.css">
+  <link rel="stylesheet" type="text/css" href="{{bundleCss}}">
   {{!-- Code Mirror --}}
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.css"/>
 </head>

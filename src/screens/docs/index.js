@@ -1,31 +1,48 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import Ecology from "ecology";
-import GettingStarted from "../../../node_modules/webpack-dashboard/docs/getting-started.md";
-import Api from "../../../node_modules/webpack-dashboard/docs/api.md";
 
-class Guide extends React.Component {
-  render() {
-    return (
-      <Ecology
-        overview={GettingStarted}
-        scope={{React, ReactDOM}}
-        playgroundtheme="elegant"
-      />
-    );
-  }
-}
+import Page from "../../components/page";
+import TitleMeta from "../../components/title-meta";
+import Markdown from "../../components/markdown";
+
 
 class Docs extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      tocArray: []
+    };
+  }
+
+  updateTocArray(tocArray) {
+    this.setState({tocArray});
+  }
+
   render() {
     return (
-      <Ecology
-        overview={Api}
-        scope={{React, ReactDOM}}
-        playgroundtheme="elegant"
-      />
+      <TitleMeta title="Component Playground | Documentation">
+        <Page
+          tocArray={this.state.tocArray}
+          location={this.props.location}
+        >
+          <Markdown
+            location={this.props.location}
+            params={this.props.params}
+            updateTocArray={this.updateTocArray.bind(this)}
+          />
+        </Page>
+      </TitleMeta>
     );
   }
 }
 
-export { Guide, Docs };
+Docs.propTypes = {
+  location: React.PropTypes.object,
+  params: React.PropTypes.object
+};
+
+Docs.defaultProps = {
+  params: null
+};
+
+export default Docs;

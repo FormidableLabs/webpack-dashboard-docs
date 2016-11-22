@@ -1,5 +1,8 @@
 import React from "react";
 
+// Common
+import Page from "../../components/page";
+
 class About extends React.Component {
   render() {
     return (

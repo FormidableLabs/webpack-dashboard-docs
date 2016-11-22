@@ -1,0 +1,15 @@
+/** Formidable Header
+*/
+
+.formidableHeader.default {
+  background: transparent !important;
+}
+
+.formidableHeader.default .formidableHeader-container {
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+.formidableHeader-by {
+  text-indent: 10px;
+}

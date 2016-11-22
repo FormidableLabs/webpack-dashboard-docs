@@ -2,6 +2,6 @@
 
 module.exports = [
   "/",
-  "/docs",
-  "/docs/getting-started"
+  "/docs/",
+  "/docs/getting-started/"
 ];

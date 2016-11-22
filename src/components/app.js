@@ -1,19 +1,41 @@
-/* global window */
 import React from "react";
-import Radium, { StyleRoot } from "radium";
+import { Link } from "react-router";
 
 // Variables and Stylesheet
-import { Header, Footer } from "formidable-landers";
+import "../styles/styles.css";
+import { Header } from "formidable-landers";
 
 class App extends React.Component {
   render() {
-    const isBrowser = typeof window !== "undefined" && window.__STATIC_GENERATOR !== true;
+    const webpackLogo = (
+      <Link to="/" className="Heading">
+        Webpack Dashboard
+      </Link>
+    );
     return (
-      <StyleRoot radiumConfig={isBrowser ? { userAgent: window.navigator.userAgent } : null}>
-        <Header/>
+      <div className="Site">
+        <Header
+          className="default"
+          logoProject={webpackLogo}
+          theme="light"
+        >
+          <div className="default">
+            <Link to="/about/" className="formidableHeader-link" activeClassName="is-active">
+              About
+            </Link>
+            <Link to="/docs/" className="formidableHeader-link" activeClassName="is-active">
+              Docs
+            </Link>
+            <a href="https://github.com/FormidableLabs/webpack-dashboard/issues">
+              Issues
+            </a>
+            <a href="https://github.com/FormidableLabs/webpack-dashboard/">
+              GitHub
+            </a>
+          </div>
+        </Header>
         {this.props.children}
-        <Footer/>
-      </StyleRoot>
+      </div>
     );
   }
 }
@@ -26,4 +48,4 @@ App.defaultProps = {
   children: null
 };
 
-export default Radium(App);
+export default App;

@@ -1,0 +1,72 @@
+/*
+* <Page /> component styles
+*/
+
+.Page-content p {
+  font-family: var(--fontBody);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 36em;
+}
+
+/*
+* Internal Page Text Styles applied to the Markdown rendered HTML
+*/
+
+.Page-content--internal h1:first-child {
+  font-family: var(--fontMonospace);
+  font-size: 1.125rem;
+  letter-spacing: 0.15em;
+  margin-top: 0; /* Kill margin on first heading */
+  text-transform: uppercase;
+}
+
+.Page-content--internal h2,
+.Page-content--internal h3 {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.Page-content--internal h2 {
+  margin-top: var(--gutterSmall);
+  margin-bottom: calc(-1 * var(--gutterSmall));
+}
+
+.Page-content--internal h3 {
+  color: var(--darkRed);
+  font-family: var(--fontHeading);
+  font-size: 1.5rem;
+  margin-top: var(--gutter);
+  margin-bottom: -1rem;
+}
+
+/* Style the markdown links */
+.Page-content--internal h1,
+.Page-content--internal h2,
+.Page-content--internal h3,
+.Page-content--internal h4,
+.Page-content--internal h5,
+.Page-content--internal h6 {
+  position: relative;
+}
+
+.Page-content--internal h1:hover .Anchor,
+.Page-content--internal h2:hover .Anchor,
+.Page-content--internal h3:hover .Anchor,
+.Page-content--internal h4:hover .Anchor,
+.Page-content--internal h5:hover .Anchor,
+.Page-content--internal h6:hover .Anchor {
+  opacity: 1;
+}
+
+.Anchor {
+  background: svg-load("../../../static/icon-link.svg") center left no-repeat;
+  position: absolute;
+  left: -30px;
+
+  height: 1em;
+  line-height: 1;
+  opacity: 0;
+  width: 30px;
+  speak: none; /* Wishing for .screenreader-hidden class */
+}
