@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 // Variables and Stylesheet
 import "../styles/styles.css";
-import { Header } from "formidable-landers";
+import { Header, Footer } from "formidable-landers";
 
 class App extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class App extends React.Component {
       </Link>
     );
     return (
-      <div className="Site">
+      <div className="Sticky">
         <Header
           className="default"
           logoProject={webpackLogo}
@@ -35,6 +35,7 @@ class App extends React.Component {
           </div>
         </Header>
         {this.props.children}
+        <Footer className="default" />
       </div>
     );
   }

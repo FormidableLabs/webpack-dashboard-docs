@@ -7,11 +7,11 @@ import DocsIndex from "webpack-dashboard/docs/api.md";
 
 export const config = [
   {
-    name: "Getting Started",
+    text: "Getting Started",
     slug: "getting-started",
     docs: DocsGettingStarted
   }, {
-    name: "API",
+    text: "API",
     slug: "index",
     docs: DocsIndex
   }

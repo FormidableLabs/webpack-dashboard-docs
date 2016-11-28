@@ -1,5 +1,8 @@
 /** Formidable Footer
 */
+.formidableFooter.default {
+  margin-top: 0;
+}
 
 .formidableFooter.default .formidableFooter-container {
   padding-right: 2%;

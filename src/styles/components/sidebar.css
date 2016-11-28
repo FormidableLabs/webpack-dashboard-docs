@@ -2,11 +2,11 @@
 * Styles for the <Sidebar /> nav component
 */
 
-.Nav {
+.Sidebar {
   margin-bottom: var(--gutter);
 }
 
-.NavList {
+.Sidebar-list {
   align-items: flex-start;
   display: flex;
   flex-direction: row;
@@ -20,22 +20,22 @@
   }
 }
 
-.NavList-item {
+.Sidebar-list-item {
   margin: var(--gutterSmall) var(--gutterSmall) 0 0;
   flex-basis: auto;
 }
 
-.TOC {
+.Sidebar-toc {
   border-left: 1px solid var(--white);
   padding-top: 10px;
   padding-left: 10px;
 }
 
-.TOC .TOC {
+.Sidebar-toc .Sidebar-toc {
   padding-top: 0;
 }
 
-.TOC-item {
+.Sidebar-toc-item {
   font-family: var(--fontBody);
   font-size: 1rem;
   line-height: 2;

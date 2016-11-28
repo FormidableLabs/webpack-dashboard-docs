@@ -5,13 +5,12 @@ import { Route, IndexRoute } from "react-router";
 import App from "./components/app";
 import Home from "./screens/home/index";
 import About from "./screens/about/index";
-import { Guide, Docs } from "./screens/docs/index";
+import Docs from "./screens/docs/index";
 
 module.exports = (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
     <Route path="/about/" component={About}/>
-    <Route path="/docs/" component={Docs}/>
-    <Route path="/docs/getting-started/" component={Guide}/>
+    <Route path="/docs/(:component/)" component={Docs}/>
   </Route>
 );

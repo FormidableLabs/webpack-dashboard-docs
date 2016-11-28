@@ -1,5 +1,5 @@
 import React from "react";
-import find from "lodash/find";
+import { findIndex } from "lodash";
 
 import MarkdownIt from "markdown-it";
 import markdownItTocAndAnchor from "markdown-it-toc-and-anchor";
@@ -10,10 +10,6 @@ import jsx from "prismjs/components/prism-jsx";
 import sh from "prismjs/components/prism-bash";
 import yaml from "prismjs/components/prism-yaml";
 /* eslint-enable no-unused-vars */
-
-import basename from "../basename";
-import { config } from "./config";
-
 
 class Markdown extends React.Component {
   constructor() {
@@ -27,7 +23,7 @@ class Markdown extends React.Component {
     Prism.highlightAll();
   }
 
-  componentDidUpdate() { // is this the right one??
+  componentDidUpdate() {
     Prism.highlightAll();
   }
 
@@ -36,18 +32,21 @@ class Markdown extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.location.pathname !== this.props.location.pathname) {
+    if (newProps.active !== this.props.active) {
       this.renderMd(newProps);
     }
   }
 
   renderMd(props) {
+    if (!props.location || !props.location.pathname) {
+      this.setState({
+        renderedMd: ""
+      });
+      return;
+    }
     this.setMarkdownRenderer(props.location.pathname);
-    const activePage = props.params.component ?
-      props.params.component : "index";
-    const docsMarkdown = find(config, { slug: activePage }).docs;
     this.setState({
-      renderedMd: this.md.render(docsMarkdown)
+      renderedMd: this.md.render(props.markdownFile)
     });
   }
 
@@ -73,15 +72,20 @@ class Markdown extends React.Component {
     const defaultRender = md.renderer.rules.link_open || function (tokens, idx, options, env, renderer) {
       return renderer.renderToken(tokens, idx, options);
     };
-    //
+
+    const basename = this.props.basename;
+
     // Update anchor links to include the basename
     md.renderer.rules.link_open = function (tokens, idx, options, env, renderer) {
-      const anchor = tokens[idx].attrs[1];
-      if (anchor.length > 0) {
-        const href = anchor[1];
-        if (href.indexOf("#") === 0) {
-          tokens[idx].attrs[1][1] = `${basename}${currentPath}${href}`;
-          tokens[idx].attrs.push(["aria-hidden", "true"]);
+      const tokenAttrs = tokens[idx].attrs;
+      const hrefIdx = findIndex(tokenAttrs, (arr) => arr.indexOf("href") >= 0);
+      if (hrefIdx >= 0) {
+        const href = tokenAttrs[hrefIdx];
+        if (href.length > 1) {
+          if (href[1].indexOf("#") === 0) {
+            href[1] = `${basename}${currentPath}${href[1]}`;
+            tokenAttrs.push(["aria-hidden", "true"]);
+          }
         }
       }
       return defaultRender(tokens, idx, options, env, renderer);
@@ -93,6 +97,7 @@ class Markdown extends React.Component {
   render() {
     return (
       <article
+        className="Markdown"
         dangerouslySetInnerHTML={{
           __html: this.state.renderedMd
         }}
@@ -102,12 +107,16 @@ class Markdown extends React.Component {
 }
 
 Markdown.propTypes = {
+  active: React.PropTypes.string.isRequired,
+  basename: React.PropTypes.string.isRequired,
   location: React.PropTypes.object.isRequired,
+  markdownFile: React.PropTypes.string,
   params: React.PropTypes.object,
   updateTocArray: React.PropTypes.func.isRequired
 };
 
 Markdown.defaultProps = {
+  active: "index",
   params: null
 };
 

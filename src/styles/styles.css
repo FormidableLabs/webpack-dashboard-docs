@@ -19,19 +19,22 @@
  * COMPONENTS
  * Discrete components of the page: such as navigation, alert dialogs, buttons, etc.
  * Any new feature or component will be added to this section.
+ * Ideally there is a 1:1 relationship between src/components and styles/components
  *
- * playground:   <Playground /> styles and CodeMirror theme
- * prism:        color theme for prism syntax highlighting (third-party)
  * button:       .Button classes
  * hero:         .Hero section of the homepage
+ * markdown:     <Markdown /> styles, including the internal pages and their links
+ * page:         <Page /> styles
+ * playground:   <Playground /> styles and CodeMirror theme
+ * prism:        color theme for prism syntax highlighting (third-party)
  * sidebar:      <Sidebar /> styles, including the .Nav classes
- * page:         <Page /> styles, including the internal pages and their links
  *
  */
 @import "./components/button.css";
 @import "./components/footer.css";
 @import "./components/header.css";
 @import "./components/hero.css";
+@import "./components/markdown.css";
 @import "./components/page.css";
 @import "./components/playground.css";
 @import "./components/prism.css";
@@ -45,6 +48,16 @@
  *
  */
 @import "./layout/grid.css";
+
+/**
+ * STATES
+ * Augment and override all other styles, such as whether an element
+ * is expanded or collapsed, or if the element is in an error or active state
+ *
+ * active:   The active states for Nav links
+ *
+ */
+@import "./states/active.css";
 
 /* Utilities must always be last, so that they can override the above */
 @import "./base/utilities.css";

@@ -1,0 +1,61 @@
+/*
+* Internal Page Text Styles applied to the Markdown rendered HTML
+*/
+
+.Markdown h1:first-child {
+  font-family: var(--fontMonospace);
+  font-size: 1.125rem;
+  letter-spacing: 0.15em;
+  margin-top: 0; /* Kill margin on first heading */
+  text-transform: uppercase;
+}
+
+.Markdown h2,
+.Markdown h3 {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.Markdown h2 {
+  margin-top: var(--gutterSmall);
+  margin-bottom: calc(-1 * var(--gutterSmall));
+}
+
+.Markdown h3 {
+  color: var(--darkRed);
+  font-family: var(--fontHeading);
+  font-size: 1.5rem;
+  margin-top: var(--gutter);
+  margin-bottom: -1rem;
+}
+
+/* Style the markdown links */
+.Markdown h1,
+.Markdown h2,
+.Markdown h3,
+.Markdown h4,
+.Markdown h5,
+.Markdown h6 {
+  position: relative;
+}
+
+.Markdown h1:hover .Anchor,
+.Markdown h2:hover .Anchor,
+.Markdown h3:hover .Anchor,
+.Markdown h4:hover .Anchor,
+.Markdown h5:hover .Anchor,
+.Markdown h6:hover .Anchor {
+  opacity: 1;
+}
+
+.Anchor {
+  background: svg-load("../../../static/icon-link.svg") center left no-repeat;
+  position: absolute;
+  left: -30px;
+
+  height: 1em;
+  line-height: 1;
+  opacity: 0;
+  width: 30px;
+  speak: none; /* Wishing for .screenreader-hidden class */
+}

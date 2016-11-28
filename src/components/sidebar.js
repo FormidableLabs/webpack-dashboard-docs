@@ -86,7 +86,9 @@ class Sidebar extends React.Component {
         return (
           <li key={item.slug} className="Sidebar-List-Item">
             <Link to={`/${route}/${item.slug}`} activeClassName="is-active">
-              {item.text}
+              <span>
+                {item.text}
+              </span>
             </Link>
             {this.renderToc(`/${route}/${item.slug}`)}
           </li>
@@ -108,7 +110,7 @@ class Sidebar extends React.Component {
   render() {
     /* eslint-disable max-len */
     return (
-      <div className="Page-sidebar">
+      <div className="Page-sidebar Grid-col">
         <nav className="Sidebar">
           {this.props.children}
         </nav>
