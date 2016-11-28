@@ -3,6 +3,9 @@ import { Link } from "react-router";
 import MarkdownIt from "markdown-it";
 import { times } from "lodash";
 
+// Child Components
+import Icon from "./icon";
+
 class Sidebar extends React.Component {
   renderTransformedToc(siblings, targetLocation) {
     const md = MarkdownIt();
@@ -80,27 +83,22 @@ class Sidebar extends React.Component {
     );
   }
 
-  renderList(items, route, category) {
+  renderList(items, route) {
     const listItems = items.map((item) => {
-      if (!category || item.category === category) {
-        return (
-          <li key={item.slug} className="Sidebar-List-Item">
-            <Link to={`/${route}/${item.slug}`} activeClassName="is-active">
-              <span>
-                {item.text}
-              </span>
-            </Link>
-            {this.renderToc(`/${route}/${item.slug}`)}
-          </li>
-        );
-      }
+      return (
+        <li key={item.slug} className="Sidebar-list-item">
+          <Link to={`/${route}/${item.slug}/`} className="btn btn--dark" activeClassName="is-active">
+            <span>
+              {item.text} <Icon />
+            </span>
+          </Link>
+          {this.renderToc(`/${route}/${item.slug}/`)}
+        </li>
+      );
     });
     return (
       <div className="u-noMargin">
-        <p className="Sidebar-SubHeading SubHeading">
-          {category}
-        </p>
-        <ul className="Sidebar-List">
+        <ul className="Sidebar-list">
           {listItems}
         </ul>
       </div>
@@ -112,7 +110,31 @@ class Sidebar extends React.Component {
     return (
       <div className="Page-sidebar Grid-col">
         <nav className="Sidebar">
-          {this.props.children}
+          <div className="Sidebar-Grid">
+            <h3 className="u-noMarginTop">
+              Documentation
+            </h3>
+            {this.renderList(this.props.docs, "docs")}
+            <ul className="Sidebar-list">
+              <li className="Sidebar-list-item">
+                <a className="btn btn--dark"
+                  href="https://github.com/FormidableLabs/webpack-dashboard/blob/master/CONTRIBUTING.md"
+                  target="_blank"
+                >
+                  <span>
+                    Contributing <Icon />
+                  </span>
+                </a>
+              </li>
+              <li className="Sidebar-list-item">
+                <Link to="/about/" className="btn btn--dark" activeClassName="is-active">
+                  <span>
+                    About <Icon />
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     );
@@ -122,13 +144,15 @@ class Sidebar extends React.Component {
 
 Sidebar.propTypes = {
   active: React.PropTypes.string,
+  docs: React.PropTypes.array,
   children: React.PropTypes.node,
   location: React.PropTypes.object,
   tocArray: React.PropTypes.array
 };
 
 Sidebar.defaultProps = {
-  active: null
+  active: null,
+  docs: []
 };
 
 export default Sidebar;

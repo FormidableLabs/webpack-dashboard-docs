@@ -12,7 +12,7 @@ export const config = [
     docs: DocsGettingStarted
   }, {
     text: "API",
-    slug: "index",
+    slug: "api",
     docs: DocsIndex
   }
 ];

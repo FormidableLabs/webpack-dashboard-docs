@@ -24,7 +24,7 @@ class Docs extends React.Component {
   renderContent(activePage) {
     const conf = find(config, { slug: activePage });
     const markdownDocs = conf.docs;
-    const editUrl = `https://github.com/FormidableLabs/webpack-dashboard/blob/master/docs/${activePage}/docs.md`;
+    const editUrl = `https://github.com/FormidableLabs/webpack-dashboard/blob/master/docs/${activePage}.md`;
     return (
       <div>
         <a href={editUrl} className="SubHeading">Edit this page</a>
@@ -41,7 +41,7 @@ class Docs extends React.Component {
 
   render() {
     const activePage = this.props.params.component ?
-      this.props.params.component : "index";
+      this.props.params.component : "getting-started";
 
     return (
       <TitleMeta title="Webpack Dashboard | Documentation">
